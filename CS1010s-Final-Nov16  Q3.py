@@ -97,9 +97,6 @@ def add_city(routes,tup):
     if tup[0] not in routes:
         routes[tup[0]] = {}
     for city,cost in tup[1]:
-        if tup[0] in routes and routes[tup[0]] == tup[1]:
-            print("route already exists")
-        else:
             routes[city][tup[0]] = cost
             routes[tup[0]][city] = cost
 from pprint import pprint
@@ -107,6 +104,4 @@ pprint(routes1)
 print("\n")
 add_city(routes1, ("E", (("A", 3), ("D", 8))))
 pprint(routes1)
-add_city(routes1, ("E", (("A", 3), ("D", 8))))
-print("\n")
-pprint(routes1)
+
