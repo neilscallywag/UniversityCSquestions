@@ -13,17 +13,25 @@ public:
 	}
 };
 
+
+
+
 class Player: public Entity { 
 //new data type eg int var it will be Player var has inherited position properties from entity class
 public:
-	Player(float X, float Y, float S) { // initilisation 
+	const char* name;
+	Player(float X, float Y, float S, const char* Name) { // initilisation 
 		x = X;
 		y = Y;
 		speed = S;
-
+		name = Name;
+		
 	}
 
 };
+
+
+
 
 class Log {
 public:
@@ -52,22 +60,31 @@ public:
 			std::cout << "[Info]" << message << std::endl;
 	};
 };
+
+
+
+
 int main() {
 	/// LEARNING CLASSES -> 1;
 
-	Player player(5.0, 5.0, 1.0);
+	Player player(5.0, 5.0, 1.0, "Neil");
+	Player player2(2.0, 2.0, 1.0, "test");
 
-	Player player2(2.0, 2.0, 1.0);
-		for (static int i; i < 10; i++) {
+	
+	
+	for (static int i; i < 10; i++) {
 			increment(player.x);
 			increment(player2.x);
 		}
 
-	player.Move(player.x, player.y);
-	player2.Move(player2.x, player2.y);
+	player.Move(player.x, player.y); // Method Move inhereted from Entity Class
+	player2.Move(player2.x, player2.y); 
 
-	std::cout << player.x << " " << player.y << std::endl;
-	std::cout << player2.x << " " << player2.y << std::endl;
+	std::cout << player.x << " " << player.y << " " << player.name << " " << player.speed << " " << std::endl;
+	std::cout << player2.x << " " << player2.y << " " << player2.name << " " << player2.speed << " " << std::endl;
+	std::cout << "Size of Player Class: " << sizeof(Player) << std::endl << "Size of Entity Class  " << sizeof(Entity) << std::endl;
+	// Size of Player = Size of Entity(12 bytes) + Const Char Name (4bytes)
+	// Size of Char is 4 bytes instead of 1 because Name is int type (N->ASCII)
 
 
 	/// LEARNING ENUMS -> 2
