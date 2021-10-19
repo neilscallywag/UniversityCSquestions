@@ -1,21 +1,28 @@
 #include <iostream>
-void increment(int& const value) {
+void increment(float& const value) {
 	value++;
 }
+// LEARNING Inheretence -> 3
 
-class Player { //new data type eg int var it will be Player var
+class Entity {
+public: 
+	float x, y, speed;
+	void Move(float& xa, float& ya) {
+		x += xa * speed;
+		y += ya * speed;
+	}
+};
+
+class Player: public Entity { 
+//new data type eg int var it will be Player var has inherited position properties from entity class
 public:
-	int x, y, speed;
-	Player(int X, int Y, int S) {
+	Player(float X, float Y, float S) { // initilisation 
 		x = X;
 		y = Y;
 		speed = S;
 
 	}
-	void Move(int& xa, int& ya) {
-		x += xa * speed;
-		y += ya * speed;
-	}
+
 };
 
 class Log {
@@ -46,11 +53,11 @@ public:
 	};
 };
 int main() {
-	/// LEARNING CLASSES;
+	/// LEARNING CLASSES -> 1;
 
-	Player player(5, 5, 1);
+	Player player(5.0, 5.0, 1.0);
 
-	Player player2(2, 2, 1);
+	Player player2(2.0, 2.0, 1.0);
 		for (static int i; i < 10; i++) {
 			increment(player.x);
 			increment(player2.x);
@@ -63,10 +70,10 @@ int main() {
 	std::cout << player2.x << " " << player2.y << std::endl;
 
 
-	/// LEARNING ENUMS
+	/// LEARNING ENUMS -> 2
 	Log log;
 	log.SetLevel(Log::Level::LError);
-	log.Warn("a!");
+	log.Warn("a!"); // doesnt get called 
 	log.ErrorM("q!");
 
 }
